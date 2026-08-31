@@ -262,3 +262,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if args.check and total_issues:
         return 1
     return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
