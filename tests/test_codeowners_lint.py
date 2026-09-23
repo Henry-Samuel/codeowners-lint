@@ -1,4 +1,4 @@
-from codeowners_lint import lint_text, lint_path, main
+from codeowners_lint import lint_text, main
 
 
 def test_clean_file_returns_zero():

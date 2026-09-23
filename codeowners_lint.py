@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Dict, List, Optional, Sequence, Tuple
 
 
@@ -107,8 +107,6 @@ def _lint(rules: List[Rule], source: str, *, check_duplicates: bool = True, chec
     issues: List[Issue] = []
     prev: Optional[Rule] = None
 
-    prev_owners: List[str] = []
-
     for rule in rules:
         if rule.is_blank:
             issues.append(Issue(source, rule.line, "CO001", "Blank line in CODEOWNERS"))
@@ -145,7 +143,6 @@ def _lint(rules: List[Rule], source: str, *, check_duplicates: bool = True, chec
                 pass
 
         prev = rule
-        prev_owners = rule.owners
 
     if check_duplicates:
         exact: dict[str, List[int]] = {}
@@ -180,7 +177,7 @@ class LintReport:
 
     def render(self, fmt: str = "plain") -> str:
         if fmt == "markdown":
-            lines = [f"# codeowners-lint report", "", f"- Source: {self.source}", f"- Issues: {len(self.issues)}", ""]
+            lines = ["# codeowners-lint report", "", f"- Source: {self.source}", f"- Issues: {len(self.issues)}", ""]
             if not self.issues:
                 lines.extend(["No issues found.", ""])
                 return "\n".join(lines)
