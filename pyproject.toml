@@ -5,22 +5,22 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "codeowners-lint"
 version = "0.1.0"
-description = "Lint GitHub CODEOWNERS files for empty lines, invalid patterns, missing ownership, duplicates, and path ordering."
+description = "Lint GitHub CODEOWNERS files for blank lines, duplicates, invalid patterns, missing ownership, and path ordering."
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
-authors = [{name = "ProjectCreationAgent"}]
-keywords = ["codeowners", "lint", "github"]
+authors = [{name = "Henry-Samuel"}]
+keywords = ["codeowners", "lint", "github", "cli", "python"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Topic :: Software Development :: Quality Assurance",
 ]
-dependencies = ["rich"]
+dependencies = []
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = ["pytest", "ruff"]
 
 [project.scripts]
 codeowners-lint = "codeowners_lint:main"
@@ -30,3 +30,6 @@ py-modules = ["codeowners_lint"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+exclude = [".github"]
