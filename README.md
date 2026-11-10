@@ -42,15 +42,19 @@ codeowners-lint --stdin < input.codeowners
 ## Project structure
 
 ```text
-codeowners-lint/
-  README.md
-  pyproject.toml
-  codeowners_lint.py
-  tests/
-    test_codeowners_lint.py
-    fixtures/
-      clean.codeowners
-      bad.codeowners
+.github/
+  workflows/
+    ci.yml
+.gitignore
+LICENSE
+README.md
+codeowners_lint.py
+pyproject.toml
+tests/
+  fixtures/
+    bad.codeowners
+    clean.codeowners
+  test_codeowners_lint.py
 ```
 
 ## Tags / keywords
